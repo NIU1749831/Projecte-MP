@@ -1,0 +1,45 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\orill\\OneDrive\\Ordinador\\Escritorio\\MP\\JocDames_ProjecteMP\u00E7\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{70C46B1B-5A37-4316-B72F-D261F16C7C1B}|JocDames_ProjecteMP\\JocDames_ProjecteMP.vcxproj|C:\\Users\\orill\\OneDrive\\Ordinador\\Escritorio\\MP\\JocDames_ProjecteMP\u00E7\\JocDames_ProjecteMP\\Random.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{70C46B1B-5A37-4316-B72F-D261F16C7C1B}|JocDames_ProjecteMP\\JocDames_ProjecteMP.vcxproj|solutionrelative:JocDames_ProjecteMP\\Random.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Random.cpp",
+              "DocumentMoniker": "C:\\Users\\orill\\OneDrive\\Ordinador\\Escritorio\\MP\\JocDames_ProjecteMP\u00E7\\JocDames_ProjecteMP\\Random.cpp",
+              "RelativeDocumentMoniker": "JocDames_ProjecteMP\\Random.cpp",
+              "ToolTip": "C:\\Users\\orill\\OneDrive\\Ordinador\\Escritorio\\MP\\JocDames_ProjecteMP\u00E7\\JocDames_ProjecteMP\\Random.cpp",
+              "RelativeToolTip": "JocDames_ProjecteMP\\Random.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-27T17:57:09.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

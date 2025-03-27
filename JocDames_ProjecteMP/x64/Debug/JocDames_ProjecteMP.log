@@ -1,0 +1,4 @@
+﻿  Random.cpp
+C:\Users\orill\OneDrive\Ordinador\Escritorio\MP\JocDames_ProjecteMPç\JocDames_ProjecteMP\Random.cpp(4,6): error C2143: error de sintaxis: falta ';' delante de '<<'
+C:\Users\orill\OneDrive\Ordinador\Escritorio\MP\JocDames_ProjecteMPç\JocDames_ProjecteMP\Random.cpp(4,1): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+C:\Users\orill\OneDrive\Ordinador\Escritorio\MP\JocDames_ProjecteMPç\JocDames_ProjecteMP\Random.cpp(4,6): error C2059: error de sintaxis: '<<'
