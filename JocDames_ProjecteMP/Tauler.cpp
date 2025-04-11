@@ -1,4 +1,3 @@
-#include <iostream>
 #include <fstream>
 #include "Tauler.h"
 
@@ -55,5 +54,5 @@ void Tauler::inicialitza(const string& nomFitxer)
 
 void Tauler::actualitzaMovimentsValids()
 {
-    
+
 }
