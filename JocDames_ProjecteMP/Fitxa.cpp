@@ -1,9 +1,18 @@
 #include<iostream>
 #include"Fitxa.h"
 
-Fitxa::Fitxa(TipusFitxa tipus, int x, int y)
+Fitxa::Fitxa(TipusFitxa tipus, ColorFitxa color, Posicio posico, int numMovimentsValids, Moviment movimentsValids[10])
 {
-	m_tipus = tipus;
-	m_color = COLOR_BLANC;
-	m_posicio.setPosicio(m_posicio.PosicioAString(x, y));
+	for (int i = 0; i < 11; i++)
+		m_movimentsValids[i] = movimentsValids[i];
+}
+
+void Fitxa::convertirADama()
+{
+	m_tipus = TIPUS_DAMA;
+}
+
+void Fitxa::afegirMovimentValid(const Moviment& moviment)
+{
+	m_movimentsValids[m_numMovimentsValids++] = moviment;
 }

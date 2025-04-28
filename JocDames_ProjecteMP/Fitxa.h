@@ -1,7 +1,5 @@
 #include "Moviment.h"
 
-const int MAX_MOVIMENTS = 20; // M�xim de moviments v�lids per fitxa
-
 /**
  * @enum TipusFitxas
  * @brief Tipus de fitxa possible al joc de dames.
@@ -27,7 +25,11 @@ public:
     /**
      * @brief Constructor per defecte (crea una casella buida).
      */
-    Fitxa();
+    Fitxa() : m_tipus(TIPUS_EMPTY), m_color(COLOR_BLANC), m_posicio("") 
+    { 
+        for (int i = 0; i < 11; i++)
+            m_movimentsValids[i].setDesti(Posicio());
+    };
 
     /**
      * @brief Constructor amb par�metres.
@@ -35,19 +37,19 @@ public:
      * @param color Color de la fitxa.
      * @param posicio Posici� inicial de la fitxa.
      */
-    Fitxa(TipusFitxa tipus, int x, int y);
+    Fitxa(TipusFitxa tipus, ColorFitxa color, Posicio posico, int numMovimentsValids, Moviment movimentsValids[10]);
 
     // Setters
-    void setTipus(TipusFitxa tipus);
-    void setColor(ColorFitxa color);
-    void setPosicio(const Posicio& posicio);
+    void setTipus(TipusFitxa tipus) { m_tipus = tipus; };
+    void setColor(ColorFitxa color) { m_color = color; };
+    void setPosicio(const Posicio& posicio) { m_posicio = posicio; };
 
     // Getters
-    TipusFitxa getTipus() const;
-    ColorFitxa getColor() const;
-    Posicio getPosicio() const;
-    int getNumMovimentsValids() const;
-    Moviment getMovimentValid(int index) const;
+    TipusFitxa getTipus() const { return m_tipus; };
+    ColorFitxa getColor() const { return m_color; };
+    Posicio getPosicio() const { return m_posicio; };
+    int getNumMovimentsValids() const { return m_numMovimentsValids; };
+    Moviment getMovimentValid(int index) const { return m_movimentsValids[index]; };
 
     // Funcionalitats
     /**
@@ -60,12 +62,12 @@ public:
      * @param moviment Moviment v�lid a afegir.
      * @return Cert si s'ha afegit correctament, fals si no hi ha espai.
      */
-    bool afegirMovimentValid(const Moviment& moviment);
+    void afegirMovimentValid(const Moviment& moviment);
 
 private:
     TipusFitxa m_tipus;                         // Tipus de la fitxa.
     ColorFitxa m_color;                         // Color de la fitxa.
     Posicio m_posicio;                          // Posicio actual de la fitxa.
-    Moviment m_movimentsValids[MAX_MOVIMENTS];  // Llista de moviments valids.
+    Moviment m_movimentsValids[10];  // Llista de moviments valids.
     int m_numMovimentsValids;                    // Nombre de moviments valids actuals.
 };

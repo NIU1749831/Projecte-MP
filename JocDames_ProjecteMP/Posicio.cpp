@@ -11,10 +11,10 @@ bool Posicio::operator==(const string& posicio)
 	return comparacio;
 }
 
-string Posicio::PosicioAString(int columna, int fila)
+string Posicio::PosicioAString()
 {
-	char x = 'a' + columna;
-	char y = '1' + fila;
+	char x = 'a' + m_x;
+	char y = '1' + m_y;
 	string posicio = x + y;
 
 	return posicio;
