@@ -16,6 +16,8 @@ public:
     bool mouFitxa(const Posicio& origen, const Posicio& desti);
     void getPosicionsPossibles(const Posicio& origen, int& nPosicions, Posicio posicionsPossibles[]);
     string toString() const;
+    void buscaMovimentsValidSimple(int i, int j, int direccio);
+    void asigna(int i, int j);
 
 private:
     Fitxa m_tauler[N_FILES][N_COLUMNES];
