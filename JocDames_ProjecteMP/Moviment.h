@@ -26,8 +26,8 @@ public:
     // Setters
     void setOrigen(const Posicio& posicio) { m_origen = posicio; };
     void setDesti(const Posicio& posicio) { m_desti = posicio; };
-    void setPecesMortes(int pecesMortes);
-    void setDireccio(const char& direccio);
+    void setPecesMortes(const int pecesMortes) { m_pecesMortes = pecesMortes; };
+    void setDireccioMoviment(const char& direccio) { m_direccionMovimento = direccio; };
 
     //getters
     Posicio getOrigen() const;
