@@ -1,6 +1,6 @@
 #include "Moviment.h"
 
-const int MAX_MOVIMENTS = 20; // Màxim de moviments vàlids per fitxa
+const int MAX_MOVIMENTS = 20; // Mï¿½xim de moviments vï¿½lids per fitxa
 
 /**
  * @enum TipusFitxa
@@ -30,10 +30,10 @@ public:
     Fitxa();
 
     /**
-     * @brief Constructor amb paràmetres.
+     * @brief Constructor amb parï¿½metres.
      * @param tipus Tipus de la fitxa.
      * @param color Color de la fitxa.
-     * @param posicio Posició inicial de la fitxa.
+     * @param posicio Posiciï¿½ inicial de la fitxa.
      */
     Fitxa(TipusFitxa tipus, ColorFitxa color, const Posicio& posicio);
 
@@ -56,8 +56,8 @@ public:
     void convertirADama();
 
     /**
-     * @brief Afegeix un moviment vàlid a la fitxa.
-     * @param moviment Moviment vàlid a afegir.
+     * @brief Afegeix un moviment vï¿½lid a la fitxa.
+     * @param moviment Moviment vï¿½lid a afegir.
      * @return Cert si s'ha afegit correctament, fals si no hi ha espai.
      */
     bool afegirMovimentValid(const Moviment& moviment);
@@ -65,7 +65,7 @@ public:
 private:
     TipusFitxa m_tipus;                         // Tipus de la fitxa.
     ColorFitxa m_color;                         // Color de la fitxa.
-    Posicio m_posicio;                          // Posició actual de la fitxa.
-    Moviment m_movimentsValids[MAX_MOVIMENTS];  // Llista de moviments vàlids.
-    int m_numMovimentsValids;                    // Nombre de moviments vàlids actuals.
+    Posicio m_posicio;                          // Posicio actual de la fitxa.
+    Moviment m_movimentsValids[MAX_MOVIMENTS];  // Llista de moviments valids.
+    int m_numMovimentsValids;                    // Nombre de moviments valids actuals.
 };
