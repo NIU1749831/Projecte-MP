@@ -25,7 +25,7 @@ void Tauler::inicialitza(const string& nomFitxer)
         int y;
         while (ficher >> tipus >> x >> y)
         {
-            int Y = y -1;
+            int Y = y - 1;
             int X = x - 'a';
             switch (tipus)
             {
