@@ -54,5 +54,42 @@ void Tauler::inicialitza(const string& nomFitxer)
 
 void Tauler::actualitzaMovimentsValids()
 {
+    for (int i = 0; i < N_FILES; i++)
+    {
+        for (int j = 0; j < N_COLUMNES; j++)
+        {
+            if (m_tauler[i][j].getTipus() == TIPUS_NORMAL)
+            {
+                if (m_tauler[i][j].getColor() == COLOR_BLANC)
+                {
+                    buscaMovimentsValidSimple(i, j, 1);
+                }
+            } 
+            else if (m_tauler[i][j].getTipus() == TIPUS_DAMA) 
+            {
 
+            }
+        }
+        
+    }
+    
+}
+
+void Tauler::buscaMovimentsValidSimple(int i, int j, int direccio)
+{
+    if (m_tauler[i - 1][j + 1].getTipus() == TIPUS_EMPTY && i - 1 > 0 && j + 1 < N_COLUMNES)
+    {
+        asigna(i - 1, j + 1);
+    }
+    if (m_tauler[i + 1][j + 1].getTipus() == TIPUS_EMPTY && i + 1 <N_FILES && j + 1 < N_COLUMNES)
+    {
+        asigna(i + 1, j + 1);
+    }  
+}
+
+void Tauler::asigna(int i, int j)
+{
+    Posicio p;
+    p.setPosicio(p.PosicioAString(i, j));
+    m_tauler[i][j].afegirMovimentValid(Moviment(p));
 }
