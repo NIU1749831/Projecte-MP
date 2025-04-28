@@ -1,12 +1,11 @@
 #include <iostream>
-#include "fitxa.h"
-#include "posicio.h"
-#include "moviment.h"
+#include "Fitxa.h"
+
 
 using namespace std;
 
-#define N_FILES = 8;
-#define N_COLUMNES = 8;
+#define N_FILES  8
+#define N_COLUMNES  8
 
 
 class Tauler

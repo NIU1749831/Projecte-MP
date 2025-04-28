@@ -3,13 +3,13 @@
 const int MAX_MOVIMENTS = 20; // Màxim de moviments vàlids per fitxa
 
 /**
- * @enum TipusFitxa
+ * @enum TipusFitxas
  * @brief Tipus de fitxa possible al joc de dames.
  */
 typedef enum {
-    TIPUS_NORMAL,   ///< Fitxa normal.
-    TIPUS_DAMA,     ///< Dama.
-    TIPUS_EMPTY     ///< Casella buida.
+    TIPUS_NORMAL,   // Fitxa normal.
+    TIPUS_DAMA,     // Dama.
+    TIPUS_EMPTY     // Casella buida.
 } TipusFitxa;
 
 /**
@@ -17,8 +17,8 @@ typedef enum {
  * @brief Color possible d'una fitxa.
  */
 typedef enum {
-    COLOR_NEGRE,    ///< Fitxa negra.
-    COLOR_BLANC     ///< Fitxa blanca.
+    COLOR_NEGRE,    // Fitxa negra.
+    COLOR_BLANC     // Fitxa blanca.
 } ColorFitxa;
 
 class Fitxa {
@@ -35,7 +35,7 @@ public:
      * @param color Color de la fitxa.
      * @param posicio Posició inicial de la fitxa.
      */
-    Fitxa(TipusFitxa tipus, ColorFitxa color, const Posicio& posicio);
+    Fitxa(TipusFitxa tipus, int x, int y);
 
     // Setters
     void setTipus(TipusFitxa tipus);
