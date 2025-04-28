@@ -4,7 +4,7 @@
  * @class Moviment
  * @brief Classe que representa un moviment possible d'una fitxa al tauler de dames.
  *
- * Contï¿½ informaciï¿½ sobre l'origen, destï¿½, peces mortes i camï¿½ seguit durant el moviment.
+ * Conte informacio sobre l'origen, desti, peces mortes i cami seguit durant el moviment.
  */
 class Moviment
 {
@@ -36,13 +36,10 @@ public:
     char getDireccio() const;
 
     /**
-<<<<<<< HEAD
      * Comprova si el moviment és vàlid.
      * @return Cert si el moviment és vàlid, fals altrament
-=======
-     Comprova si el moviment ï¿½s vï¿½lid.
-     * @return Cert si el moviment ï¿½s vï¿½lid, fals altrament.
->>>>>>> 0693642b689bbe873acb45c7e0498da6a3f45f04
+     Comprova si el moviment es valid.
+     * @return Cert si el moviment es valid, fals altrament.
      */
     bool esValid() const;
     
@@ -75,14 +72,8 @@ public:
     bool movimentMatarMultiplesFitxes();
 
 private:
-<<<<<<< HEAD
     Posicio m_origen;     // Posició d'origen del moviment.
     Posicio m_desti;      // Posició de destí del moviment.
     int m_pecesMortes;    // Nombre de peces contràries mortes en aquest moviment.
     char m_direccionMovimento;
-=======
-    Posicio m_origen;     // Posicio d'origen del moviment.
-    Posicio m_desti;      // Posicio de desti del moviment.
-    int m_pecesMortes;    // Nombre de peces contraries mortes en aquest moviment.
->>>>>>> 0693642b689bbe873acb45c7e0498da6a3f45f04
 };
