@@ -84,7 +84,11 @@ void Tauler::buscaMovimentsValidSimple(int i, int j, int direccio)
     if (m_tauler[i + 1][j + 1].getTipus() == TIPUS_EMPTY && i + 1 <N_FILES && j + 1 < N_COLUMNES)
     {
         asigna(i + 1, j + 1);
-    }  
+    }
+    if (m_tauler[i - 1][j + 1].getTipus() == (TIPUS_DAMA || TIPUS_NORMAL) && i - 1 > 0 && j + 1 < N_COLUMNES)
+    {
+        bfs(i - 1);
+    }
 }
 
 void Tauler::asigna(int i, int j)
