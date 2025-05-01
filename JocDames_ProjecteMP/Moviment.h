@@ -22,10 +22,12 @@ class Moviment
 {
 public:
     // Constructors
+
+    Moviment() : m_desti(Posicio()), m_tipusMoviment(MOVIMENT_EMPTY) {};
     /**
      * @brief Constructor per defecte.
      */
-    Moviment() : m_desti(Posicio()), m_tipusMoviment(MOVIMENT_EMPTY) {};
+    Moviment(const Posicio& p) : m_desti(p), m_tipusMoviment(MOVIMENT_EMPTY) {};
 
     /**
      * @brief Constructor amb par�metres.

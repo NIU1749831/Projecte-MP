@@ -13,11 +13,13 @@ bool Posicio::operator==(const string& posicio)
 	return comparacio;
 }
 
-string Posicio::PosicioAString()
+string Posicio::PosicioAString(int x, int y)
 {
-	char x = 'a' + m_x;
-	char y = '1' + m_y;
-	string posicio = x + y;
+	char cx = 'a' + x;
+	char cy = '1' + y;
+	string posicio;
+	posicio += cx;
+	posicio += cy;
 
 	return posicio;
 }

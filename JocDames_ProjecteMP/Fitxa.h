@@ -25,10 +25,11 @@ public:
     /**
      * @brief Constructor per defecte (crea una casella buida).
      */
-    Fitxa() : m_tipus(TIPUS_EMPTY), m_color(COLOR_BLANC), m_posicio("") 
-    { 
-        for (int i = 0; i < 11; i++)
-            m_movimentsValids[i].setDesti(Posicio());
+    Fitxa() : m_tipus(TIPUS_EMPTY), m_color(COLOR_BLANC), m_posicio(Posicio()), m_numMovimentsValids(0)
+    {
+        for (int i = 0; i < 10; ++i) {
+            m_movimentsValids[i] = Moviment();
+        }
     };
 
     /**
@@ -37,7 +38,7 @@ public:
      * @param color Color de la fitxa.
      * @param posicio Posici� inicial de la fitxa.
      */
-    Fitxa(TipusFitxa tipus, ColorFitxa color, Posicio posico, int numMovimentsValids, Moviment movimentsValids[10]);
+    Fitxa(TipusFitxa tipus, Posicio posico);
 
     // Setters
     void setTipus(TipusFitxa tipus) { m_tipus = tipus; };
@@ -69,6 +70,6 @@ private:
     TipusFitxa m_tipus;                         // Tipus de la fitxa.
     ColorFitxa m_color;                         // Color de la fitxa.
     Posicio m_posicio;                          // Posicio actual de la fitxa.
-    Moviment m_movimentsValids[10];  // Llista de moviments valids.
-    int m_numMovimentsValids;                    // Nombre de moviments valids actuals.
+    Moviment m_movimentsValids[10];             // Llista de moviments valids.
+    int m_numMovimentsValids;                   // Nombre de moviments valids actuals.
 };

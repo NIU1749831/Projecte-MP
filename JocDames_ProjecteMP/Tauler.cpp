@@ -14,7 +14,9 @@ void Tauler::inicialitza(const string& nomFitxer)
         {
             for (int j = 0; j < N_COLUMNES; j++)
             {
-                m_tauler [i][j] = Fitxa(TIPUS_EMPTY, i, j);
+                Posicio p;
+                p.PosicioAString(j, i);
+                m_tauler [i][j] = Fitxa(TIPUS_EMPTY, p);
             }
             
         }
@@ -62,16 +64,16 @@ void Tauler::actualitzaMovimentsValids()
             {
                 if (m_tauler[i][j].getColor() == COLOR_BLANC)
                 {
-                    buscaMovimentsValidSimple(i, j, 1);
+                    
                 }
                 else
                 {
-                    buscaMovimentsValidSimple(i, j, -1);
+                    
                 }
             } 
             else if (m_tauler[i][j].getTipus() == TIPUS_DAMA) 
             {
-                buscaMovimentsDama(i, j);
+                
             }
         }
         
@@ -188,3 +190,60 @@ void Tauler::bfs(int i, int j, int direccio, Posicio posicionsPossibles[], int& 
         } while (k <= nPosicions && i > 2 && j < N_COLUMNES - 2 && j > 2);
     }
 }
+<<<<<<< HEAD
+=======
+
+string Tauler::toString() const
+{
+     //usamos sstream para poder operar con los string como si fueran outputs stream
+    // stringstream, lo que nos hace, es crear una variable de tipos stringstream, la cual nos permite operar con strings con el oeprador << y endl, facilitando la implementacion
+    stringstream tauler;
+
+    for (int i = 0; i < N_FILES; i++) //for que nos va cambiando de linea al acabar una fila
+    {
+        tauler << 8 - i << ": ";
+        for (int j = 0; j < N_COLUMNES; j++) //este for realiza la tarea de convertir cada fila del tablero a un caracter para ponder en el stringstream
+        {
+            switch (m_tauler[i][j].getTipus())
+            {
+            case TIPUS_EMPTY:
+                tauler << "_ ";
+                break;
+            case TIPUS_NORMAL:
+                if (m_tauler[i][j].getColor() == COLOR_BLANC)
+                    tauler << "O ";
+                else
+                    tauler << "X ";
+                break;
+            case TIPUS_DAMA:
+                if(m_tauler[i][j].getColor() == COLOR_BLANC)
+                    tauler << "D ";
+                else
+                    tauler << "R ";
+                break;
+            default:
+                break;
+            }
+
+
+        }
+        tauler << endl;
+    }
+    tauler << "   A B C D E F G H" << endl;
+    return tauler.str(); //la funcion .str() convierte la variable tauler que es stringstream a un string
+}
+
+bool Tauler::mouFitxa(const Posicio& origen, const Posicio& desti)
+{
+    Posicio posicionsPossibles[100];
+    int nPosicions;
+    /*
+    * Trobar la fitxa, si no es troba --> return false
+    * Buscar si posicio desti esta dintre de posicionsPossibles
+    * 
+    */
+
+    return false;
+
+}
+>>>>>>> a2595f27d7d3fc7a36cf63bbf162d68e6c1339e8
