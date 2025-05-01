@@ -22,12 +22,12 @@ string Posicio::PosicioAString()
 	return posicio;
 }
 
-void Posicio::stringToInts(const Posicio& p, int& i, int& j)
+void Posicio::stringToInts(const string& posicio, int& i, int& j)
 {
 	//convertimos la posicion a una variable de la cual podemos leer su contenido
-	istringstream posicio(p.getPosicio());
-	posicio >> j; //el numero de columnas (el valor de x), es una letra
-	posicio >> i; //el numero de filas (el valor de y), es un numero
+	istringstream Posicio(posicio);
+	Posicio >> j; //el numero de columnas (el valor de x), es una letra
+	Posicio >> i; //el numero de filas (el valor de y), es un numero
 
 	j -= 97;
 	i -= 48;

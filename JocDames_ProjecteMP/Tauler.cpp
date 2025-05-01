@@ -86,10 +86,11 @@ void Tauler::asigna(int i, int j)
     m_tauler[i][j].afegirMovimentValid(Moviment(p));
 }
 
-void Tauler::getPosicionsPossibles (const Posicio& origen, int& nPosicions, Posicio posicionsPossibles[])
+void Tauler::getPosicionsPossibles (Posicio& origen, int& nPosicions, Posicio posicionsPossibles[])
 {
-    int i, j;
-    origen.
+    int i, j, direccio;
+    origen.stringToInts(origen.getPosicio(), i, j);
+    if (m_tauler[i][j].getColor() = COLOR_BLANC) direccio = 1;
     //Comprobamos los movimientos simples antes de pasar al bfs
     if (i + direccio >= 0 && i + direccio < N_FILES && j + 1 >= 0 && j + 1 < N_COLUMNES)
     {
