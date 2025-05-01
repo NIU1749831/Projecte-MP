@@ -14,7 +14,7 @@ void Tauler::inicialitza(const string& nomFitxer)
         {
             for (int j = 0; j < N_COLUMNES; j++)
             {
-                m_tauler [i][j].Fitxa(TIPUS_EMPTY, i, j);
+                m_tauler [i][j] = Fitxa(TIPUS_EMPTY, i, j);
             }
             
         }
@@ -64,10 +64,14 @@ void Tauler::actualitzaMovimentsValids()
                 {
                     buscaMovimentsValidSimple(i, j, 1);
                 }
+                else
+                {
+                    buscaMovimentsValidSimple(i, j, -1);
+                }
             } 
             else if (m_tauler[i][j].getTipus() == TIPUS_DAMA) 
             {
-
+                buscaMovimentsDama(i, j);
             }
         }
         
@@ -75,21 +79,14 @@ void Tauler::actualitzaMovimentsValids()
     
 }
 
-void Tauler::buscaMovimentsValidSimple(int i, int j, int direccio)
-{
-    if (m_tauler[i - 1][j + 1].getTipus() == TIPUS_EMPTY && i - 1 > 0 && j + 1 < N_COLUMNES)
-    {
-        asigna(i - 1, j + 1);
-    }
-    if (m_tauler[i + 1][j + 1].getTipus() == TIPUS_EMPTY && i + 1 <N_FILES && j + 1 < N_COLUMNES)
-    {
-        asigna(i + 1, j + 1);
-    }  
-}
-
 void Tauler::asigna(int i, int j)
 {
     Posicio p;
     p.setPosicio(p.PosicioAString(i, j));
     m_tauler[i][j].afegirMovimentValid(Moviment(p));
+}
+
+void Tauler::getPosicionsPossibles (const Posicio& origen, int& nPosicions, Posicio posicionsPossibles[])
+{
+    
 }
