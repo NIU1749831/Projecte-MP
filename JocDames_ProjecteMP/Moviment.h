@@ -47,6 +47,6 @@ public:
  
 
 private:
-    Posicio m_desti;                 // Posició de destí del moviment.
-    TipusMoviment m_tipusMoviment  
+    Posicio m_desti;                 // Posiciï¿½ de destï¿½ del moviment.
+    TipusMoviment m_tipusMoviment;  
 };

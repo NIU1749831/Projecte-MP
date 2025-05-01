@@ -88,5 +88,43 @@ void Tauler::asigna(int i, int j)
 
 void Tauler::getPosicionsPossibles (const Posicio& origen, int& nPosicions, Posicio posicionsPossibles[])
 {
-    
+    int i, j;
+    origen.
+    //Comprobamos los movimientos simples antes de pasar al bfs
+    if (i + direccio >= 0 && i + direccio < N_FILES && j + 1 >= 0 && j + 1 < N_COLUMNES)
+    {
+        if (m_tauler[i + direccio][j + 1].getTipus() == TIPUS_EMPTY)
+        {
+            asigna(i + direccio, j + 1);
+        }
+       
+    }
+    if (i + direccio >= 0 && i + direccio < N_FILES && j - 1 >= 0 && j - 1 < N_COLUMNES)
+    {
+        if (m_tauler[i + direccio][j - 1].getTipus() == TIPUS_EMPTY)
+        {
+            asigna(i + direccio, j - 1);
+        }
+        
+    }
 }
+
+ /*else if (m_tauler[i + direccio][j + 1].getColor() != m_tauler[i][j].getColor())
+        {
+            // Check for capture move (two squares ahead)
+            if (i + 2*direccio >= 0 && i + 2*direccio < N_FILES && j + 2 >= 0 && j + 2 < N_COLUMNES && m_tauler[i + 2*direccio][j + 2].getTipus() == TIPUS_EMPTY)
+            {
+                asigna(i + 2*direccio, j + 2);
+                trobat = true;
+            }
+        }*/
+       /*else if (m_tauler[i + direccio][j - 1].getColor() != m_tauler[i][j].getColor())
+        {
+            // Check for capture move (two squares ahead)
+            if (i + 2*direccio >= 0 && i + 2*direccio < N_FILES && j - 2 >= 0 && j - 2 < N_COLUMNES && m_tauler[i + 2*direccio][j - 2].getTipus() == TIPUS_EMPTY)
+            {
+                asigna(i + 2*direccio, j - 2);
+                trobat = true;
+            }
+        }
+        */

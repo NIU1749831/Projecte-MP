@@ -64,7 +64,6 @@ public:
      */
     void afegirMovimentValid(const Moviment& moviment);
 
-    void stringToInts(const Posicio& p, int& i, int& j);
 
 private:
     TipusFitxa m_tipus;                         // Tipus de la fitxa.

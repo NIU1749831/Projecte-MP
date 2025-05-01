@@ -21,6 +21,8 @@ public:
 	
 	//sobrecarrega operador per comparar 
 	bool operator==(const string& posicio);
+
+    void stringToInts(const Posicio& p, int& i, int& j);
 private:
 	int m_x, m_y;
 	string m_posicio;
