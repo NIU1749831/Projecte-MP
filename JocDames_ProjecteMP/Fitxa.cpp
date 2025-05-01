@@ -2,10 +2,12 @@
 #include<sstream>
 #include"Fitxa.h"
 
-Fitxa::Fitxa(TipusFitxa tipus, ColorFitxa color, Posicio posico, int numMovimentsValids, Moviment movimentsValids[10])
+Fitxa::Fitxa(TipusFitxa tipus, Posicio posico)
 {
-	for (int i = 0; i < 11; i++)
-		m_movimentsValids[i] = movimentsValids[i];
+	m_tipus = tipus;
+	m_color = COLOR_BLANC;
+	m_numMovimentsValids = 0;
+	
 }
 
 void Fitxa::convertirADama()

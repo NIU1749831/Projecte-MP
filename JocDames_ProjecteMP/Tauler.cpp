@@ -15,7 +15,9 @@ void Tauler::inicialitza(const string& nomFitxer)
         {
             for (int j = 0; j < N_COLUMNES; j++)
             {
-                m_tauler [i][j] = Fitxa(TIPUS_EMPTY, i, j);
+                Posicio p;
+                p.PosicioAString(j, i);
+                m_tauler [i][j] = Fitxa(TIPUS_EMPTY, p);
             }
             
         }
@@ -63,16 +65,16 @@ void Tauler::actualitzaMovimentsValids()
             {
                 if (m_tauler[i][j].getColor() == COLOR_BLANC)
                 {
-                    buscaMovimentsValidSimple(i, j, 1);
+                    
                 }
                 else
                 {
-                    buscaMovimentsValidSimple(i, j, -1);
+                    
                 }
             } 
             else if (m_tauler[i][j].getTipus() == TIPUS_DAMA) 
             {
-                buscaMovimentsDama(i, j);
+                
             }
         }
         
@@ -237,7 +239,14 @@ string Tauler::toString() const
 
 bool Tauler::mouFitxa(const Posicio& origen, const Posicio& desti)
 {
+    Posicio posicionsPossibles[100];
+    int nPosicions;
+    /*
+    * Trobar la fitxa, si no es troba --> return false
+    * Buscar si posicio desti esta dintre de posicionsPossibles
+    * 
+    */
 
-
+    return false;
 
 }

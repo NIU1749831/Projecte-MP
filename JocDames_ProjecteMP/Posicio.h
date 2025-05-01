@@ -7,7 +7,7 @@ class Posicio
 public:
 	//constructores por defecto y por parametro
 	Posicio() :m_x(0), m_y(0), m_posicio("") {};
-	Posicio(const string& posicio): m_posicio(posicio){};
+	Posicio(const string& posicio): m_posicio(posicio), m_x(0), m_y(0){};
 
 	//setters
 	void setPosicio(const string& posicio) { m_posicio = posicio; };
@@ -17,7 +17,7 @@ public:
 
 	//Funcion que convierte una posicon a un string
 	//@params:la x,y son dos ints
-	string PosicioAString();
+	string PosicioAString(int x, int y);
 	
 	//sobrecarrega operador per comparar 
 	bool operator==(const string& posicio);
