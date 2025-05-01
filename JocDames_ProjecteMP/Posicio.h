@@ -22,6 +22,11 @@ public:
 	//sobrecarrega operador per comparar 
 	bool operator==(const string& posicio);
 
+	/*
+	* @brief Funcion que nos permite converitr una posicion en formati string a dos valores int, la usaremos solo en la classe Tauler para trabajar con m_tauler
+	* @params string posicion que ceremos convrtir i los valors de i,j a los que convertimos la posicion
+	* @return n otendra return
+	*/
     void stringToInts(const string& posicio, int& i, int& j);
 private:
 	int m_x, m_y;
