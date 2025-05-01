@@ -24,10 +24,8 @@ string Posicio::PosicioAString()
 
 void Posicio::stringToInts(const string& posicio, int& i, int& j)
 {
-	//convertimos la posicion a una variable de la cual podemos leer su contenido
-	istringstream Posicio(posicio);
-	Posicio >> j; //el numero de columnas (el valor de x), es una letra
-	Posicio >> i; //el numero de filas (el valor de y), es un numero
+	j=posicio[0]; //el numero de columnas (el valor de x), es una letra
+	i=posicio[1]; //el numero de filas (el valor de y), es un numero
 
 	j -= 97;
 	i -= 48;
