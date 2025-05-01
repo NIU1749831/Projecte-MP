@@ -18,7 +18,7 @@ public:
     string toString() const;
     bool buscaMovimentsValidSimple(int i, int j, int direccio);
     void asigna(int i, int j);
-
+    void bfs(int i, int j, int direccio, Posicio posicionsPossibles[], int& nPosicions);
 private:
     Fitxa m_tauler[N_FILES][N_COLUMNES];
 };

@@ -89,14 +89,21 @@ void Tauler::asigna(int i, int j)
 void Tauler::getPosicionsPossibles (Posicio& origen, int& nPosicions, Posicio posicionsPossibles[])
 {
     int i, j, direccio;
+
+    //Pasamos la variable origen a i y j
     origen.stringToInts(origen.getPosicio(), i, j);
-    if (m_tauler[i][j].getColor() = COLOR_BLANC) direccio = 1;
+
+    //Ponemos direccion a 1 si la pieza es blanca debido a que solo van hacia arriba, y direccion a -1 si es negra porque va hacia abajo
+    if (m_tauler[i][j].getColor() == COLOR_BLANC) direccio = 1;
+    else if (m_tauler[i][j].getColor() == COLOR_BLANC) direccio = -1;
+
     //Comprobamos los movimientos simples antes de pasar al bfs
     if (i + direccio >= 0 && i + direccio < N_FILES && j + 1 >= 0 && j + 1 < N_COLUMNES)
     {
         if (m_tauler[i + direccio][j + 1].getTipus() == TIPUS_EMPTY)
         {
-            asigna(i + direccio, j + 1);
+            posicionsPossibles[nPosicions] = m_tauler[i + direccio][j + 1].getPosicio();
+            nPosicions++;
         }
        
     }
@@ -104,9 +111,70 @@ void Tauler::getPosicionsPossibles (Posicio& origen, int& nPosicions, Posicio po
     {
         if (m_tauler[i + direccio][j - 1].getTipus() == TIPUS_EMPTY)
         {
-            asigna(i + direccio, j - 1);
+            posicionsPossibles[nPosicions] = m_tauler[i + direccio][j - 1].getPosicio();
+            nPosicions++;
         }
         
+    }
+}
+
+void Tauler::bfs(int i, int j, int direccio, Posicio posicionsPossibles[], int& nPosicions)
+{
+    int k = 0;
+    //bfs para blancas
+    if (direccio == 1)
+    {
+        do
+        {
+            if (m_tauler[i + 1][j + 1].getColor() != m_tauler[i][j].getColor())
+            {
+                if (m_tauler[i + 2][j + 2].getTipus() == TIPUS_EMPTY)
+                {
+                    posicionsPossibles[nPosicions] = m_tauler[i][j].getPosicio();
+                    nPosicions++;
+                    j += 2;
+                    i = i +2*k;
+                }
+            }
+            if (m_tauler[i + 1][j - 1].getColor() != m_tauler[i][j].getColor()) 
+            {
+                if ( m_tauler[i - 2][j - 2].getTipus() == TIPUS_EMPTY)
+                {
+                    posicionsPossibles[nPosicions] = m_tauler[i + 2][j - 2].getPosicio();
+                    nPosicions++;
+                    j -= 2;
+                    i = i +2*k;
+                }
+            }
+        k++;
+        } while (k <= nPosicions && i < N_FILES - 2 && j < N_COLUMNES - 2 && j > 2);
+    }
+    if (direccio == -1)
+    {
+        do
+        {
+            if (m_tauler[i - 1][j + 1].getColor() != m_tauler[i][j].getColor())
+            {
+                if (m_tauler[i + 2][j + 2].getTipus() == TIPUS_EMPTY)
+                {
+                    posicionsPossibles[nPosicions] = m_tauler[i][j].getPosicio();
+                    nPosicions++;
+                    j += 2;
+                    i = i +2*k;
+                }
+            }
+            if (m_tauler[i - 1][j - 1].getColor() != m_tauler[i][j].getColor()) 
+            {
+                if ( m_tauler[i + 2][j - 2].getTipus() == TIPUS_EMPTY)
+                {
+                    posicionsPossibles[nPosicions] = m_tauler[i + 2][j - 2].getPosicio();
+                    nPosicions++;
+                    j -= 2;
+                    i = i +2*k;
+                }
+            }
+        k++;
+        } while (k <= nPosicions && i > 2 && j < N_COLUMNES - 2 && j > 2);
     }
 }
 
