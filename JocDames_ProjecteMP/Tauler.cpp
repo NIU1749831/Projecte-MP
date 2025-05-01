@@ -1,4 +1,5 @@
 #include <fstream>
+#include<sstream>
 #include "Tauler.h"
 
 using namespace std;
@@ -123,38 +124,43 @@ void Tauler::getPosicionsPossibles (Posicio& origen, int& nPosicions, Posicio po
 void Tauler::bfs(int i, int j, int direccio, Posicio posicionsPossibles[], int& nPosicions)
 {
     int k = 0;
+    int x=j, y=i;
     // bsf per les fitxes blanques
     if (direccio == 1)
     {
         do
         {
             //comprovem si es pot moure cap a la diagonal dreta (j+1)
-            if (m_tauler[i + 1][j + 1].getColor() != m_tauler[i][j].getColor()) //comporvem si tenim una peï¿½a del color contrari al costat
+            if (m_tauler[i + 1][j + 1].getColor() != m_tauler[i][j].getColor()) //comporvem si tenim una peça del color contrari al costat
             {
                 if (m_tauler[i + 2][j + 2].getTipus() == TIPUS_EMPTY) //mirem si la casella seguent a la enemiga, esta buida
                 {
+                    
+                    j +=2;  //es suma 2, ja que ens movem cap a la dreta
+                 
+                  
                     posicionsPossibles[nPosicions] = m_tauler[i][j].getPosicio();
                     nPosicions++;
-                    j = j + 2; // se li suma 2 a j, ja que ens hem mogut cap a la dreta
-                    i = i +2*k;/* i = i + 2 * k, ja que la i sempre augmentara en funcio del valor de k, ja que a cada iteracio del bucle, 
-                                  es mira 2 caselles endevant(2 * k)*/
+
                 }                   
             }
 
             //comporvem si es pot moure cap a la diagonal esquerra (j-1)
-            if (m_tauler[i + 1][j - 1].getColor() != m_tauler[i][j].getColor()) //comporvem si tenim una peï¿½a del color contrari al costat
+            if (m_tauler[i + 1][j - 1].getColor() != m_tauler[i][j].getColor()) //comporvem si tenim una peça del color contrari al costat
             {
-                if ( m_tauler[i - 2][j - 2].getTipus() == TIPUS_EMPTY) //mirem si la casella seguent a la enemiga, esta buida
+                if ( m_tauler[i + 2][j - 2].getTipus() == TIPUS_EMPTY) //mirem si la casella seguent a la enemiga, esta buida
                 {
-                    posicionsPossibles[nPosicions] = m_tauler[i + 2][j - 2].getPosicio();
+                    j -= 2; //es resta 2, ja que ens movem cap a la esquerra
+                    
+                    posicionsPossibles[nPosicions] = m_tauler[i][j].getPosicio();
                     nPosicions++;
-                    j = j - 2; // es resta 2 a j, ja que ens hem mogut cap a la esquerra
-                    i = i +2*k;
+                    
 
                 }
             }
+        i+=2;
         k++;
-        } while (k <= nPosicions && i < N_FILES - 2 && j < N_COLUMNES - 2 && j > 2);
+        } while (k <= nPosicions && i <= N_FILES - 2 && j <= N_COLUMNES - 2 && j >= 2);
         /*
         * sortira del bucle un cop volguem mourens fora del taulell o haguem k sigui mes gran que nPosicions, el que vol dir que no hi ha cap posicio
         * a la que ens poguem moure, per tant no s incrementa nPosicions
@@ -168,12 +174,12 @@ void Tauler::bfs(int i, int j, int direccio, Posicio posicionsPossibles[], int& 
         {
             if (m_tauler[i - 1][j + 1].getColor() != m_tauler[i][j].getColor())
             {
-                if (m_tauler[i + 2][j + 2].getTipus() == TIPUS_EMPTY)
+                if (m_tauler[i - 2][j + 2].getTipus() == TIPUS_EMPTY)
                 {
                     posicionsPossibles[nPosicions] = m_tauler[i][j].getPosicio();
                     nPosicions++;
                     j = j + 2;
-                    i = i +2*k;
+                    i = i - 2;
                 }
             }
             if (m_tauler[i - 1][j - 1].getColor() != m_tauler[i][j].getColor()) 
@@ -183,15 +189,13 @@ void Tauler::bfs(int i, int j, int direccio, Posicio posicionsPossibles[], int& 
                     posicionsPossibles[nPosicions] = m_tauler[i + 2][j - 2].getPosicio();
                     nPosicions++;
                     j = j - 2;
-                    i = i +2*k;
+                    i = i - 2;
                 }
             }
         k++;
         } while (k <= nPosicions && i > 2 && j < N_COLUMNES - 2 && j > 2);
     }
 }
-<<<<<<< HEAD
-=======
 
 string Tauler::toString() const
 {
@@ -246,4 +250,3 @@ bool Tauler::mouFitxa(const Posicio& origen, const Posicio& desti)
     return false;
 
 }
->>>>>>> a2595f27d7d3fc7a36cf63bbf162d68e6c1339e8
