@@ -1,6 +1,6 @@
 #include <fstream>
 #include<sstream>
-#include "Tauler.h"
+#include "tauler.hpp"
 
 using namespace std;
 
@@ -15,9 +15,10 @@ void Tauler::inicialitza(const string& nomFitxer)
         {
             for (int j = 0; j < N_COLUMNES; j++)
             {
+                string pos;
                 Posicio p;
-                p.PosicioAString(j, i);
-                m_tauler [i][j] = Fitxa(TIPUS_EMPTY, p);
+                pos=p.PosicioAString(j, i);
+                m_tauler [i][j] = Fitxa(TIPUS_EMPTY, Posicio(pos));
             }
             
         }
@@ -52,6 +53,7 @@ void Tauler::inicialitza(const string& nomFitxer)
                 break;
             }
         }
+        ficher.close();
     }
 }
 
@@ -89,8 +91,9 @@ void Tauler::asigna(int i, int j)
     m_tauler[i][j].afegirMovimentValid(Moviment(p));
 }
 
-void Tauler::getPosicionsPossibles (Posicio& origen, int& nPosicions, Posicio posicionsPossibles[])
+/*void Tauler::getPosicionsPossibles(const Posicio& origen, int& nPosicions, Posicio posicionsPossibles[])
 {
+  
     int i, j, direccio;
 
     //Pasamos la variable origen a i y j
@@ -119,7 +122,30 @@ void Tauler::getPosicionsPossibles (Posicio& origen, int& nPosicions, Posicio po
         }
         
     }
+    
 }
+*/
+
+void Tauler::getPosicionsPossibles(const Posicio & origen, int& nPosicions, Posicio posicionsPossibles[]) 
+{
+        nPosicions = 0;
+        int i, j;
+        origen.stringToInts(origen.getPosicio(), i, j); // Descomentar y corregir
+
+        TipusFitxa tipus = m_tauler[i][j].getTipus();
+        ColorFitxa color = m_tauler[i][j].getColor();
+
+        if (tipus == TIPUS_NORMAL) {
+            //falta poner por cada color
+            int direccio = (color == COLOR_BLANC) ? -1 : 1; //ta raro
+            // Comprobar movimientos normales y capturas
+            // Implementar lógica correcta para movimientos y capturas
+        }
+        else if (tipus == TIPUS_DAMA) {
+            // Implementar lógica para damas
+        }
+}
+
 
 void Tauler::bfs(int i, int j, int direccio, Posicio posicionsPossibles[], int& nPosicions)
 {
@@ -160,6 +186,7 @@ void Tauler::bfs(int i, int j, int direccio, Posicio posicionsPossibles[], int& 
             }
         i+=2;
         k++;
+
         } while (k <= nPosicions && i <= N_FILES - 2 && j <= N_COLUMNES - 2 && j >= 2);
         /*
         * sortira del bucle un cop volguem mourens fora del taulell o haguem k sigui mes gran que nPosicions, el que vol dir que no hi ha cap posicio

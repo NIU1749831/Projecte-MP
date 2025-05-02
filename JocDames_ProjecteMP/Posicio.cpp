@@ -2,16 +2,11 @@
 #include "Posicio.h"
 #include <sstream>
 
-bool Posicio::operator==(const string& posicio)
+bool Posicio::operator==(Posicio posicio) const
 {
-	bool comparacio;
-	if (m_posicio == posicio)
-		comparacio = true;
-	else
-		comparacio = false;
-
-	return comparacio;
+	return (m_posicio==posicio.m_posicio);
 }
+
 
 string Posicio::PosicioAString(int x, int y)
 {
@@ -24,7 +19,7 @@ string Posicio::PosicioAString(int x, int y)
 	return posicio;
 }
 
-void Posicio::stringToInts(const string& posicio, int& i, int& j)
+void Posicio::stringToInts(const string& posicio, int& i, int& j)const
 {
 	j=posicio[0]; //el numero de columnas (el valor de x), es una letra
 	i=posicio[1]; //el numero de filas (el valor de y), es un numero
