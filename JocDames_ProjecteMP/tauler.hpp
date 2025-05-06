@@ -1,75 +1,98 @@
 #include <iostream>
+#include <vector>
+#include <queue>
+#include<fstream>
 #include "Fitxa.h"
 using namespace std;
 
-//dimensio del tauler
+// dimension del tauler
 #define FILES 8
 #define COLUMNES 8
 
-//Per controlar els bucles que necesiten tenir fer servir la dimensio del tauler
-#define N_FILES  7
-#define N_COLUMNES  7
+// Per controlar els bucles que necessiten tenir fer servir la dimensio del tauler
+#define N_FILES 7
+#define N_COLUMNES 7
 
+typedef struct {
+    Posicio pos;
+    vector<Posicio> camino;
+} Nodo;
 
 class Tauler
 {
 public:
-
     /*
-    * @brief Esta funcion inicializa el tablero de una partida en funcion de un fitxero
-    * @params El nombre del fitxero, donde se encuentran las posiciones de las fitxas
-    * @return no tiene return, es un metodo
+    * @brief Aquesta funcio inicialitza el tauler d'una partida en funcio d'un fitxer
+    * @params El nom del fitxer, on es troben les posicions de les fitxes
+    * @return no te return, es un metode
     */
-    void inicialitza(const string& nomFitxer); //fet
+    void inicialitza(const string& nomFitxer); //TOT BE
 
     /*
-    * @brief Funcio que nos permite actualizar todos los movimientos validos de cualquiera de las fitxas del tablero, para poder 
-    *        actualiazar el array de movimentsValids de la classe Fitxa
-    * @params no tiene parametros, ya que la posicion del a fitxa se puede acceder des de la classe fitxa
-    * @return es un metodo, no tiene returns
+    * @brief Funcio que ens permet actualitzar tots els moviments valids de qualsevol de les fitxes del tauler
+    * @params no te parametres, ja que la posicio de la fitxa es pot accedir des de la classe fitxa
+    * @return es un metode, no te returns
     */
-    void actualitzaMovimentsValids();
+    void actualitzaMovimentsValids(); //TOT BE
 
     /*
-    * @brief Esta funcion mueve la ficha hacia una posicion destino, teniendo en cuenta la posicon de esa ficha, tambien tendra en cuenta si mata alguan/s ficha por el camino
-    *        Comprovara si el movimiento esta dentro de los movimientos validos de esa ficha, tambien convertira a esa ficha en dama si llega al final del tablero
-    * @params, la posicion de origen nos permite saber la ficha que queremos mover, y la posicion desti, es la posicion final del movimiento
-    * @return, retornara false, en caso que no se haya podido realizar el movimiento, y true en caso contrario 
+    * @brief Aquesta funcio mou la fitxa cap a una posicio desti, tenint en compte la posicio d'aquesta fitxa
+    *        Comprovara si el moviment esta dins dels moviments valids d'aquesta fitxa
+    * @params la posicio d'origen ens permet saber la fitxa que volem moure, i la posicio desti es la posicio final del moviment
+    * @return retornara false, en cas que no s'hagi pogut realitzar el moviment, i true en cas contrari
     */
-    bool mouFitxa(const Posicio& origen, const Posicio& desti);
+    bool mouFitxa(const Posicio& origen, const Posicio& desti); //TOT BE
 
     /*
-    * @brief Esta funcion nos permite calcular todos los movimientos possibles que peude hacer una pieza en una posicion origen
-    * @params la posicion de origen, la cual nos indica que pieza queremos analiazr; nPosicones es el numero de posiciones que puede hacer la pieza, 
-    *         y el array de posiciones psssibles de la pieza 
+    * @brief es un getter que ens retorna totes les posicions possibles (i el numero d'elles) a les que es pot moure una fitxa
+    * @param Posicio origen --> Ens permet saber quina es la peça que volem aconseguirs les posicions
+    * @param Int nPosicions --> "return" del numero de posicions possibles
+    * @param Posicio posicionsPossibles[] -> Array amb les posicions possibles d'una fitxa
     */
-    void getPosicionsPossibles(const Posicio& origen, int& nPosicions, Posicio posicionsPossibles[]);
+    void getPosicionsPossibles(const Posicio& origen, int& nPosicions, Posicio posicionsPossibles[]); //TOT BE
 
     /*
-    * @brief convierte una posicion en forma de doble int a una variable Posicio y añade ese movimiento al array de MovimentsPossibles de una ficha
-    * @params dos ints, que nos sirven para generar una variable posicion
-    * @reutrn es un metodo, no tiene return
+    * @brief converteix una posicio en forma de doble int a una variable Posicio i afegeix aquest moviment a l'array de MovimentsPossibles d'una fitxa
+    * @params dos ints, que ens serveixen per generar una variable posicio
+    * @return es un metode, no te return
     */
-    void asigna(int i, int j); //fet
+    void asigna(int i, int j); //TOT BE
 
     /*
-    * @brief, nos permite convertir el tablero en un string
-    * @params no tiene parametros, ya que solo usa el tablero que ya forma parte de la classe
-    * @ return retorna el string con el tablero
+    * @brief ens permet convertir el tauler en un string
+    * @params no te parametres, ja que nomes fa servir el tauler que ja forma part de la classe
+    * @return retorna el string amb el tauler
     */
-    string toString() const; //fet
+    string toString() const; //TOT BE
 
     /*
-    @brief: aquest funcio ens permet realitzar un algoritme de bfs, ja que tractem el taulell com un graf, es una funcio auxiliar de getPosicionsPosssibles
-    @params
-        *int i,j --> ens donen la posicio dintre del taulell, son its i no Posicio, ja que es mes facil per treballar amb la matriu del taulell
-        *            i,j no estan passats per referencia, ja que els necesitem modificar dintre de la funcio, sense alterar la posicio fora de la funcio
-        * int direccio --> ens serveix per poder distingir entre peçes blanques i negres
-        * Posicio posicionsPossibles[] --> Es l'array on es van guardant totes les posicions possibles del graf/taulell
-        * int6 nPosicions --> El numero de posicions a les cuals es pot moure la fitxa de la posicio i,j
-    @return no te return, ja que es un metode el cual ens serveix per opmplir l'array posicionsPossibles
-        */
+    *@brief Ens permet comprovar si un moviment es de captura o no
+    * @param Posicio origen --> Ens permet saber quina es la fitxa 
+    * @param Posicio desti --> Ens indica quin moviment es 
+    * @return true en cas que sigui un moviment de captura i false si no ho es
+    */
+    bool esMovimentDeCaptura(const Posicio& origen, const Posicio& desti) const; //TOT BE
+                    
+    /*
+    *@brief Comprova si una posicio es valida (esta dintre del taulell)
+    * @param int i,j --> La posicio en format de coordanades
+    * @return true si es valida, false en cas que no sigui valida
+    */
+    bool esPosicioValida(int i, int j) const; //TOT BE
+
+    /*
+    * @brief Ens permet obtenir totes les posicions a les que es pot moure una fitxa, tenint en compte si es dama o no
+    * @param int i,j --> posicio de la fitxa en forma cartesiana
+    * @param tor<Posicio>& posicionsValides --> Vector on anem guardant les posicions a mesura que les anem troabt
+    */
+    void obtenirPosicionsValides(int i, int j, vector<Posicio>& posicionsValides); //TOT BE
+
+    void verificarCaptura(int i, int j, int direccio, int deltaJ, vector<Posicio>& posicionsValides);
+
+    void verificarMovimentsDama(int i, int j, vector<Posicio>& posicionsValides);
+
     void bfs(int i, int j, int direccio, Posicio posicionsPossibles[], int& nPosicions);
+
 private:
     Fitxa m_tauler[FILES][COLUMNES];
 };

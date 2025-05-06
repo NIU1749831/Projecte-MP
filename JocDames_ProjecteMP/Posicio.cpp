@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Posicio.h"
+#include "posicio.hpp"
 #include <sstream>
 
 bool Posicio::operator==(Posicio posicio) const
@@ -26,4 +26,9 @@ void Posicio::stringToInts(const string& posicio, int& i, int& j)const
 
 	j -= 97;
 	i -= 48;
+}
+
+ostream& operator<<(ostream& out, const Posicio& pos)
+{
+	return out << pos.getPosicio();
 }

@@ -1,4 +1,4 @@
-#include "Posicio.h"
+#include "posicio.hpp"
 
 /*
 @brief: nos permite saber que tipo de movimiento es

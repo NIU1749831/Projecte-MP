@@ -28,6 +28,9 @@ public:
 	* @return n otendra return
 	*/
     void stringToInts(const string& posicio, int& i, int& j)const ;
+
+	
 private:
 	string m_posicio;
 };
+ostream& operator<<(ostream& out, const Posicio& pos);
