@@ -1,34 +1,23 @@
-#include <iostream>
-#include "posicio.hpp"
+﻿#include "Posicio.hpp"
 #include <sstream>
 
-bool Posicio::operator==(Posicio posicio) const
+bool Posicio::operator==(const Posicio& posicio) const
 {
-	return (m_posicio==posicio.m_posicio);
+    return (m_posicio == posicio.m_posicio);
 }
-
 
 string Posicio::PosicioAString(int x, int y)
 {
-	char cx = 'a' + x;
-	char cy = '1' + y;
-	string posicio;
-	posicio += cx;
-	posicio += cy;
-
-	return posicio;
+    return string(1, 'a' + x) + string(1, '1' + y);
 }
 
-void Posicio::stringToInts(const string& posicio, int& i, int& j)const
+void Posicio::stringToInts(const string& posicio, int& i, int& j) const
 {
-	j=posicio[0]; //el numero de columnas (el valor de x), es una letra
-	i=posicio[1]; //el numero de filas (el valor de y), es un numero
-
-	j -= 97;
-	i -= 48;
+    j = posicio[0] - 'a';
+    i = posicio[1] - '1';
 }
 
 ostream& operator<<(ostream& out, const Posicio& pos)
 {
-	return out << pos.getPosicio();
+    return out << pos.getPosicio();
 }

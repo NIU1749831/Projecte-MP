@@ -1,54 +1,60 @@
-#include "posicio.hpp"
 
-/*
-@brief: nos permite saber que tipo de movimiento es
-* tendra 3 valores: NORMAL, MATAR, MATAR_ENCADENAT, MOVIMENT_EMPTY
-*/
+#ifndef MOVIMENT_H
+#define MOVIMENT_H
+
+
+
+#include "Posicio.hpp"
+#include<vector>
 
 typedef enum {
     MOVIMENT,
     MATAR,
     MATAR_ENCADENAT,
+    MATAR_ENCADENAT_FINAL,
     MOVIMENT_EMPTY
-}TipusMoviment;
+} TipusMoviment;
 
-/**
- * @class Moviment
- * @brief Classe que representa un moviment possible d'una fitxa al tauler de dames.
- *
- * Conte informacio sobre l'origen, desti, peces mortes i cami seguit durant el moviment.
- */
 class Moviment
 {
 public:
-    // Constructors
+    Moviment() : m_origen(Posicio()), m_desti(Posicio()), m_tipusMoviment(MOVIMENT_EMPTY) {};
 
-    Moviment() : m_desti(Posicio()), m_tipusMoviment(MOVIMENT_EMPTY) {};
-    /**
-     * @brief Constructor per defecte.
-     */
-    Moviment(const Posicio& p) : m_desti(p), m_tipusMoviment(MOVIMENT_EMPTY) {};
+    Moviment(const Posicio& origen, const Posicio& desti) : m_origen (origen), m_desti(desti), m_tipusMoviment(MOVIMENT_EMPTY) 
+    {
+        m_camino.push_back(desti); // el destí sol si només és 1 pas
+    };
 
-    /**
-     * @brief Constructor amb parï¿½metres.
-     * @param origen Posiciï¿½ d'origen del moviment.
-     * @param desti Posiciï¿½ de destï¿½ del moviment.
-     * @param pecesMortes Nombre de peces contrï¿½ries mortes en aquest moviment (opcional, per defecte 0).
-     */
-    Moviment(const Posicio& desti, const TipusMoviment& tmov) : m_desti(desti), m_tipusMoviment(tmov) {};
+    Moviment(const Posicio& origen, const Posicio& desti, const TipusMoviment& tipus) : m_origen (origen), m_desti(desti), m_tipusMoviment(tipus)
+    {
+        m_camino.push_back(desti);
+    };
 
     // Setters
     void setDesti(const Posicio& posicio) { m_desti = posicio; };
-    void setTipusMoviemnt(const TipusMoviment& t) { m_tipusMoviment = t; };
-    
+    void setTipusMoviment(const TipusMoviment& t) { m_tipusMoviment = t; };
 
-    //getters
+    void setCami(const std::vector<Posicio>& cami) { m_camino = cami; };
+    void afegeixPosicioAlCamino(const Posicio& p) { m_camino.push_back(p); };
+
+    void afegeixCaptura(const Posicio& p) { m_captures.push_back(p); };
+    void setCaptures(vector<Posicio> caps) { m_captures = caps; };
+
+    // Getters
     Posicio getDesti() const { return m_desti; };
-    TipusMoviment getTipusMoviemt() const { return m_tipusMoviment; };
+    TipusMoviment getTipusMoviment() const { return m_tipusMoviment; };
+    Posicio getOrigen()const { return m_origen; };
+    vector<Posicio> getCami() const { return m_camino; };
 
- 
+    const vector<Posicio>& getCamino() const { return m_camino; };
+    const vector<Posicio>& getCaptures() const { return m_captures; };
 
 private:
-    Posicio m_desti;                 // Posiciï¿½ de destï¿½ del moviment.
-    TipusMoviment m_tipusMoviment;  
+    Posicio m_desti;
+    Posicio m_origen;
+    TipusMoviment m_tipusMoviment;
+    vector<Posicio> m_camino;
+    vector<Posicio> m_captures;
 };
+
+#endif
